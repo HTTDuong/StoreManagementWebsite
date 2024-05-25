@@ -1,0 +1,52 @@
+<div class="p-4">
+    <form method="post" action="<%= formAction %>" class="p-4"
+          style="width: fit-content; box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+          border-radius: 20px; border: 2px solid rgba(255, 255, 255, .2);">
+        <div class="mb-3 row">
+            <div class="col-auto">
+                <label for="fullName" class="form-label">Họ và tên: </label>
+            </div>
+            <div class="col-auto w-100">
+                <input name="fullName" type="text" value="<%= account.fullName %>" class="form-control" id="fullName">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <div class="col-auto">
+                <label for="username" class="form-label">Tài khoản: </label>
+            </div>
+            <div class="col-auto w-100">
+                <input name="username" type="text" value="<%= account.username %>" class="form-control" id="username">
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <div class="col-auto">
+                <label for="email" class="form-label">Email: </label>
+            </div>
+            <div class="col-auto w-100">
+                <input name="email" type="text" value="<%= account.email %>" class="form-control" id="email">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="isActive" <%= account.isActive ? 'checked' : '' %>>
+                <label class="form-check-label" for="isActive">
+                    Đã kích hoạt
+                </label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="isLocked" <%= account.isLocked ? 'checked' : '' %>>
+                <label class="form-check-label" for="isLocked">
+                    Khóa
+                </label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary"><%= buttonText %></button>
+    </form>
+</div>

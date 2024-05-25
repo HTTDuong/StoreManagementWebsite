@@ -1,0 +1,65 @@
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+
+<div class="my-2">
+    <a class="btn btn-success btn-sm" href="/product/new">
+        <i class="bi bi-plus"></i>
+        THÊM SẢN PHẨM
+    </a>
+</div>
+
+<table id="example" class="table table-striped" style="width:100%">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Tên sản phẩm</th>
+        <th>Giá nhập</th>
+        <th>Giá bán</th>
+        <th>Loại sản phẩm</th>
+        <th>Chức năng</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% for(let i = 0; i < products.length; i++) { %>
+        <tr>
+            <th scope="row"><%= Number(i) + 1 %></th>
+            <td><%= products[i].name %></td>
+            <td><%= products[i].importPrice %></td>
+            <td><%= products[i].retailPrice %></td>
+            <td><%= products[i].category %></td>
+            <td>
+                <div class="d-flex gap-1">
+                    <a
+                            class="btn btn-primary btn-sm"
+                            href="/product/<%= products[i]._id %>"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="top"
+                            title="Sửa sản phẩm"
+                    >
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                    <form action="/product/<%= products[i]._id %>?_method=DELETE" method="post"
+                          onsubmit="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')">
+                        <button
+                                type="submit"
+                                class="btn btn-danger btn-sm"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Xóa sản phẩm"
+                        >
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+    <% } %>
+    </tbody>
+</table>
+
+<script>
+  new DataTable('#example');
+</script>

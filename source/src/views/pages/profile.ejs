@@ -1,0 +1,55 @@
+<div class="my-2">
+    <a class="btn btn-success btn-sm" href="/user/change-password">
+        <i class="bi bi-plus"></i>
+        ĐỔI MẬT KHẨU
+    </a>
+</div>
+
+<div class="p-4">
+    <form>
+        <div class="mb-3 row">
+            <div class="col-auto">
+                <label for="fullName" class="form-label">Họ và tên: </label>
+            </div>
+            <div class="col-auto w-100">
+                <input type="text" value="<%= account.fullName %>" class="form-control" id="fullName" readonly>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <div class="col-auto">
+                <label for="username" class="form-label">Tài khoản: </label>
+            </div>
+            <div class="col-auto w-100">
+                <input type="text" value="<%= account.username %>" class="form-control" id="username" readonly>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <div class="col-auto">
+                <label for="email" class="form-label">Email: </label>
+            </div>
+            <div class="col-auto w-100">
+                <input type="text" value="<%= account.email %>" class="form-control" id="email" readonly>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="isActive" <%= account.isActive ? 'checked' : '' %> readonly>
+                <label class="form-check-label" for="isActive">
+                    Đã kích hoạt
+                </label>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="isLocked" <%= account.isLocked ? 'checked' : '' %> readonly>
+                <label class="form-check-label" for="isLocked">
+                    Khóa
+                </label>
+            </div>
+        </div>
+    </form>
+</div>

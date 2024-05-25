@@ -1,0 +1,60 @@
+<div>
+    <table style="border: 1px solid black;">
+        <thead>
+        <tr>
+            <th style="width: 200px;">Tên sản phẩm</th>
+            <th style="width: 120px;">Đơn giá</th>
+            <th style="width: 80px;">Số lượng</th>
+            <th style="width: 120px;">Thành tiền</th>
+        </tr>
+        </thead>
+        <tbody>
+            <% for (let i = 0; i < products?.length; i++) { %>
+                <tr>
+                    <td><%= products?.[i]?.name %></td>
+                    <td style="text-align: right"><%= products?.[i]?.unitPrice %></td>
+                    <td style="text-align: right"><%= products?.[i]?.amount %></td>
+                    <td style="text-align: right"><%= products?.[i]?.unitPrice * products?.[i]?.amount %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+
+<div style="width: 100%; height: 20px;"></div>
+
+
+<table>
+    <thead>
+    <tr>
+        <th style="width: 80px;"></th>
+        <th style="width: 200px;"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Số điện thoại:</td>
+        <td style="text-align: right;"><%= customer?.phone %></td>
+    </tr>
+    <tr>
+        <td>Họ và tên:</td>
+        <td style="text-align: right;"><%= customer?.name %></td>
+    </tr>
+    <tr>
+        <td>Địa chỉ:</td>
+        <td style="text-align: right;"><%= customer?.address %></td>
+    </tr>
+    <tr>
+        <td>Tổng tiền:</td>
+        <td style="text-align: right;"><%= price %></td>
+    </tr>
+    <tr>
+        <td>Tiền nhận:</td>
+        <td style="text-align: right;"><%= receive %></td>
+    </tr>
+    <tr>
+        <td>Tiền dư:</td>
+        <td style="text-align: right;"><%= remain %></td>
+    </tr>
+    </tbody>
+</table>

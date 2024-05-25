@@ -1,0 +1,88 @@
+<div>
+    <div class="dropdown" style="width: 100%;">
+        <div>
+            <label for="search-input"></label>
+            <input id="search-input" type="text" class="form-control" placeholder="Tìm kiếm sản phẩm...">
+        </div>
+
+        <div id="search-menu" class="dropdown-menu w-100 overflow-auto" aria-labelledby="search-input"
+             style="padding: 4px; max-height: 320px;">
+            <table id="warehouse" class="table table-bordered table-striped table-hover w-100">
+                <thead>
+                <tr class="text-center">
+                    <th style="width: 120px;">Barcode</th>
+                    <th style="width: 120px;">Tên sản phẩm</th>
+                    <th style="width: 120px;">Giá bán</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% for (const product of products) { %>
+                    <tr style="cursor: pointer;">
+                        <td class="text-center"><%= product.barcode %></td>
+                        <td><%= product.name %></td>
+                        <td class="text-end"><%= product.retailPrice %></td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="overflow-auto" style="border: 1px var(--bs-border-color) solid; border-radius: 4px; height: 320px; margin: 20px 0;">
+    <table id="cart" class="table table-bordered w-100">
+        <thead>
+        <tr>
+            <th>Barcode</th>
+            <th>Tên sản phẩm</th>
+            <th>Đơn giá</th>
+            <th>Số lượng</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <form id="info">
+        <div class="d-flex row">
+            <div class="my-3 col-6">
+                <label for="phone" class="form-label">Số điện thoại</label>
+                <input name="phone" type="text" class="form-control" id="phone">
+            </div>
+
+            <div class="my-3 col-6">
+                <label for="name" class="form-label">Họ và tên</label>
+                <input name="name" type="text" class="form-control" id="name">
+            </div>
+
+            <div class="my-3 col-12">
+                <label for="address" class="form-label">Địa chỉ</label>
+                <input name="address" type="text" class="form-control" id="address">
+            </div>
+
+            <div class="my-3 col-4">
+                <label for="total" class="form-label">Tổng tiền</label>
+                <input name="total" type="number" class="form-control" id="total" value="0" disabled>
+            </div>
+
+            <div class="my-3 col-4">
+                <label for="receive" class="form-label">Tiền nhận</label>
+                <input name="receive" type="number" class="form-control" id="receive" value="0">
+            </div>
+
+            <div class="my-3 col-4">
+                <label for="remain" class="form-label">Tiền trả lại</label>
+                <input name="remain" type="number" class="form-control" id="remain" value="0">
+            </div>
+
+            <div class="my-1 5 col-12">
+                <button type="submit" class="btn btn-primary w-100">XÁC NHẬN</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="/scripts/transaction.js"></script>

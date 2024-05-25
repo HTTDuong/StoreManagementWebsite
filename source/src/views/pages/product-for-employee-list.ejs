@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+
+<body>
+<table id="example" class="table table-striped" style="width:100%">
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Tên sản phẩm</th>
+        <th>Giá bán</th>
+        <th>Loại sản phẩm</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% for(let i = 0; i < products.length; i++) { %>
+        <tr>
+            <th scope="row"><%= Number(i) + 1%></th>
+            <td><%= products[i].name %></td>
+            <td><%= products[i].retailPrice %></td>
+            <td><%= products[i].category %></td>
+        </tr>
+    <% } %>
+    </tbody>
+</table>
+</body>
+
+<script>
+    new DataTable('#example');
+</script>
+
+</html>

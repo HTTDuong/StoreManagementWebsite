@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Easiest Way to Add Input Masks to Your Forms</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="p-4 registration-form">
+
+    <form method="post" action="<%= formAction %>" class="p-4"
+          style="border: 1px solid black; width: fit-content; box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+          border-radius: 20px; border: 2px solid rgba(255, 255, 255, .2);">
+        <h2>Tạo sản phẩm</h2>
+
+        <div class="form-group row pt-2">
+            <label for="barcode" class="col-sm-4 col-form-label">Mã vạch: </label>
+            <div class="col-sm-8">
+                <input type="text" value="<%= product.barcode %>" class="form-control" id="barcode" name="barcode">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="name" class="col-sm-4 col-form-label">Tên: </label>
+            <div class="col-sm-8">
+                <input type="text" value="<%= product.name %>" class="form-control" id="name" name="name">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="importPrice" class="col-sm-4 col-form-label">Giá nhập: </label>
+            <div class="col-sm-8">
+                <input type="text" value="<%= product.importPrice %>" class="form-control" id="importPrice"
+                       name="importPrice">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="retailPrice" class="col-sm-4 col-form-label">Giá bán lẻ: </label>
+            <div class="col-sm-8">
+                <input type="text" value="<%= product.retailPrice %>" class="form-control" id="retailPrice"
+                       name="retailPrice">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="category" class="col-sm-4 col-form-label">Danh mục: </label>
+            <div class="col-sm-8">
+                <input type="text" value="<%= product.category %>" class="form-control" id="category" name="category">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary"><%= buttonText %></button>
+    </form>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script src="assets/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+
+<body>
+<div class="my-2">
+    <a class="btn btn-success btn-sm" href="/account/new">
+        <i class="bi bi-plus"></i>
+        THÊM NHÂN VIÊN
+    </a>
+</div>
+
+<table id="example" class="table table-striped w-100">
+    <thead>
+    <tr>
+        <th>
+            <div class="text-center">STT</div>
+        </th>
+        <th>
+            <div class="text-center">Avatar</div>
+        </th>
+        <th>
+            <div class="text-center">Họ tên</div>
+        </th>
+        <th>
+            <div class="text-center">Username</div>
+        </th>
+        <th>
+            <div class="text-center">Chức vụ</div>
+        </th>
+        <th>
+            <div class="text-center">Khóa</div>
+        </th>
+        <th>
+            <div class="text-center">Kích hoạt</div>
+        </th>
+        <th>
+            <div class="text-center">Chức năng</div>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <% for(let i = 0; i < employees.length; i++) { %>
+        <tr>
+            <th scope="row"><%= Number(i) + 1 %></th>
+            <td><%= employees[i].avatar %></td>
+            <td><%= employees[i].fullName %></td>
+            <td><%= employees[i].username %></td>
+            <td><%= employees[i].permissions %></td>
+            <td>
+                <div class="form-check form-switch d-flex justify-content-center">
+                    <input type="checkbox" data="<%= employees[i]._id %>" onchange="lockAccount(this)"
+                           class="form-check-input" <%= employees[i].isLocked ? 'checked' : '' %>>
+                </div>
+            </td>
+            <td>
+                <div class="text-center">
+                    <i class="bi bi-circle-fill <%= employees[i].isActive ? 'text-success' : 'text-danger' %>"></i>
+                </div>
+            </td>
+            <td>
+                <button
+                        href="/account/resend-email/<%= employees[i]._id %>"
+                        data="<%= employees[i]._id %>"
+                        class="btn btn-success btn-sm"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Gửi email xác nhận"
+                        onclick="sendEmail(this)"
+                >
+                    <i class="bi bi-send"></i>
+                </button>
+                <a
+                        href="/account/<%= employees[i]._id %>"
+                        class="btn btn-primary btn-sm"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Xem chi tiết"
+                >
+                    <i class="bi bi-search"></i>
+                </a>
+            </td>
+        </tr>
+    <% } %>
+    </tbody>
+</table>
+</body>
+
+<script>
+  new DataTable('#example');
+
+  async function lockAccount(it) {
+    try {
+      const res = await axios.post(`/account/lock/${it.getAttribute('data')}`, {
+        isLock: it.checked,
+      });
+
+      if (!res?.data?.success) {
+        alert('Có lỗi xảy ra!');
+        return;
+      }
+
+      alert('Cập nhật khóa thành công!');
+    } catch (err) {
+      alert('Có lỗi xảy ra!');
+    }
+  }
+
+  async function sendEmail(it) {
+    try {
+      const res = await axios.get(`/account/resend-email/${it.getAttribute('data')}`);
+
+      if (!res?.data?.success) {
+        alert('Có lỗi xảy ra!');
+        return;
+      }
+
+      alert('Gửi mail thành công!');
+    } catch (err) {
+      alert('Có lỗi xảy ra!');
+    }
+  }
+</script>
+
+</html>

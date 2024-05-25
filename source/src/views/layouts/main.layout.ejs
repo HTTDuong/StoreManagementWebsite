@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDT</title>
+    <link rel="stylesheet" href="/styles/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <script type="application/javascript" src="/scripts/axios.min.js"></script>
+    <script type="application/javascript" src="/scripts/function.js"></script>
+    <script type="application/javascript" src="/scripts/jquery.min.js"></script>
+    <script type="application/javascript" src="/scripts/jquery.easing.min.js"></script></head>
+    <script type="application/javascript" src="/scripts/bootstrap.bundle.min.js"></script>
+    <script type="application/javascript" src="/scripts/dataTables.bootstrap5.min.js"></script>
+    <script type="application/javascript" src="/scripts/jquery.dataTables.min.js"></script>
+<body>
+<div class="main d-flex flex-column">
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">VDT</a>
+
+            <div class="d-flex justify-content-end">
+                <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="account" data-bs-toggle="dropdown" aria-expanded="false">TÀI KHOẢN</a>
+
+                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="account">
+                            <li><a class="dropdown-item" href="/user">CÁ NHÂN</a></li>
+                            <li><a class="dropdown-item" href="/user/sign-out">ĐĂNG XUẤT</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="d-flex flex-fill w-100 overflow-hidden position-relative">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark my-menu" style="max-width: 240px; width: 100%;">
+            <ul class="nav nav-pills flex-column mb-auto">
+                <li>
+                    <a href="/report" class="nav-link text-white">
+                        <i class="bi bi-bar-chart-line"></i>
+                        <span class="my-nav-label">THỐNG KÊ</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/transaction/current" class="nav-link text-white">
+                        <i class="bi bi-receipt-cutoff"></i>
+                        <span class="my-nav-label">GIAO DỊCH</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/product" class="nav-link text-white">
+                        <i class="bi bi-box-seam"></i>
+                        <span class="my-nav-label">SẢN PHẨM</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/customer" class="nav-link text-white">
+                        <i class="bi bi-people"></i>
+                        <span class="my-nav-label">KHÁCH HÀNG</span>
+                    </a>
+                </li>
+                <% if (isAdmin) { %>
+                    <li>
+                        <a href="/account" class="nav-link text-white">
+                            <i class="bi bi-people"></i>
+                            <span class="my-nav-label">NHÂN VIÊN</span>
+                        </a>
+                    </li>
+                <% } %>
+            </ul>
+
+            <div class="d-flex justify-content-end px-3">
+                <a href="#" class="nav-link text-white toggleMenuOption">
+                    <i class="bi bi-three-dots"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="flex-fill d-flex flex-column h-100">
+            <div class="p-4 overflow-auto" style="flex: auto"><%- body %></div>
+
+            <div class="px-4 py-2 bg-dark text-white">VDT</div>
+        </div>
+    </div>
+</div>
+
+<script type="application/javascript" src="/scripts/main.js"></script>
+</body>
+</html>

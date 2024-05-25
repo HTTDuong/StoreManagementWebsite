@@ -1,0 +1,80 @@
+<div class="p-4">
+    <form>
+        <div class="mb-3 row">
+            <div class="col-auto">
+                <label for="fullName" class="form-label">Khách hàng: </label>
+            </div>
+            <div class="col-auto w-100">
+                <input type="text" value="<%= trans.customer %>" class="form-control" id="fullName" readonly>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <div class="col-auto">
+                <label for="employee" class="form-label">Nhân viên thanh toán: </label>
+            </div>
+            <div class="col-auto w-100">
+                <input type="text" value="<%= trans.employee %>" class="form-control" id="employee" readonly>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <div class="col-auto">
+                <label for="products" class="form-label">Sản phẩm: </label>
+            </div>
+<!--            <div class="col-auto w-100">-->
+<!--                <input type="text" value="<%= trans.products %>" class="form-control" id="products" readonly>-->
+<!--            </div>-->
+            <div class="col-auto w-100">
+                <table id="example" class="table table-striped" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Code</th>
+                        <th>Số lượng</th>
+                        <th>Giá</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <% for (let i = 0; i < trans.products.length; i++) { %>
+                            <tr>
+                                <th scope="row"><%= Number(i) + 1%></th>
+                                <td><%= trans.products[i].barcode %></td>
+                                <td><%= trans.products[i].amount %></td>
+                                <td><%= trans.products[i].unitPrice %> VND</td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <div class="col-auto">
+                <label for="price" class="form-label">Tổng tiền: </label>
+            </div>
+            <div class="col-auto w-100">
+                <input type="text" value="<%= trans.price %>" class="form-control" id="price" readonly>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <div class="col-auto">
+                <label for="receive" class="form-label">Số tiền nhận từ khách: </label>
+            </div>
+            <div class="col-auto w-100">
+                <input type="text" value="<%= trans.receive %>" class="form-control" id="receive" readonly>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <div class="col-auto">
+                <label for="remain" class="form-label">Sô tiền dư: </label>
+            </div>
+            <div class="col-auto w-100">
+                <input type="text" value="<%= trans.remain %>" class="form-control" id="remain" readonly>
+            </div>
+        </div>
+
+    </form>
+</div>

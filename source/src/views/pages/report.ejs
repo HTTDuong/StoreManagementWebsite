@@ -1,0 +1,112 @@
+<link rel="stylesheet" href="/styles/report.css">
+
+<form id="getReport" action="/report" method="GET">
+    <div class="input-group my-3 w-100 gap-3">
+        <div style="width: 120px;">
+            <label for="time-line" class="col-form-label">Thời gian:</label>
+        </div>
+
+        <div style="flex: auto;">
+            <select id="time-line" name="timeLine" class="form-select" aria-label="">
+                <% for (let timeLineOpt of timeLineOpts) { %>
+                    <option
+                            value="<%= timeLineOpt.value %>"
+                            <%= timeLineOpt.selected ? 'selected' : '' %>
+                    ><%= timeLineOpt.label %></option>
+                <% } %>
+            </select>
+        </div>
+
+        <div>
+            <button type="submit" class="btn btn-primary" style="width: 50px;">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </div>
+
+    <div
+            id="specificTimeLine"
+            class="input-group my-3 gap-3"
+            style="display: <%= timeLine === 'SPECIFIC' ? 'flex' : 'none' %>;"
+    >
+        <div style="width: 120px;"></div>
+        <span class="input-group-text">Từ ngày</span>
+        <input name="from" value="<%= from %>" type="date" class="form-control" aria-label="Username">
+        <span class="input-group-text">đến ngày</span>
+        <input name="to" value="<%= to %>" type="date" class="form-control" aria-label="Server">
+    </div>
+
+    <div class="input-group my-3 gap-3">
+        <div style="width: 120px;">
+            <label for="time-type" class="col-form-label">Chia theo:</label>
+        </div>
+
+        <div style="flex: auto;">
+            <select id="time-ty pe" name="timeType" class="form-select" aria-label="">
+                <% for (let timeTypeOpt of timeTypeOpts) { %>
+                    <option
+                            value="<%= timeTypeOpt.value %>"
+                            <%= timeTypeOpt.selected ? 'selected' : '' %>
+                    ><%= timeTypeOpt.label %></option>
+                <% } %>
+            </select>
+        </div>
+    </div>
+</form>
+
+<div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <button
+            class="nav-link active"
+            id="chart-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#chart"
+            type="button"
+            role="tab"
+            aria-controls="chart"
+            aria-selected="true"
+    >Thống kê
+    </button>
+
+    <button
+            class="nav-link"
+            id="transaction-list-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#transaction-list"
+            type="button"
+            role="tab"
+            aria-controls="transaction-list"
+            aria-selected="false"
+    >
+        Danh sách giao dịch
+    </button>
+</div>
+
+<div style="width: 100%; height: 20px;"></div>
+
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="chart" role="tabpanel" aria-labelledby="chart-tab" tabindex="0">
+        <div id="transaction-chart" class="w-100" style="height:400px;"></div>
+        <div id="product-chart" class="w-100" style="height:400px;"></div>
+    </div>
+
+    <div class="tab-pane fade" id="transaction-list" role="tabpanel" aria-labelledby="transaction-list-tab" tabindex="1">
+        <table id="transaction" class="table table-striped" style="width:100%">
+            <thead>
+            <tr>
+                <th>STT</th>
+                <th>Số điện thoại khách</th>
+                <th>Tên khách</th>
+                <th>Tổng tiền</th>
+                <th>Ngày tạo</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="/scripts/echarts.min.js"></script>
+
+<script src="/scripts/report.js"></script>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Họ tên</th>
+            <th>Số điện thoại</th>
+            <th>Địa chỉ</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (let i = 0; i < customers.length; i++) { %>
+            <tr>
+                <th scope="row"><%= Number(i) + 1%></th>
+                <td><%= customers[i].name %></td>
+                <td><%= customers[i].phone %></td>
+                <td><%= customers[i].address %></td>
+                <td>
+                    <a
+                            href="/customer/<%= customers[i]._id %>"
+                            class="btn btn-primary btn-sm"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="top"
+                            title="Xem chi tiết"
+                    ><i class="bi bi-search"></i></a>
+                </td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+</body>
+
+<script>
+    new DataTable('#example');
+</script>
+
+</html>

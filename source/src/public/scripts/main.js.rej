@@ -1,0 +1,17 @@
+diff a/src/public/scripts/main.js b/src/public/scripts/main.js	(rejected hunks)
+@@ -1,7 +1,9 @@
+ window.addEventListener('DOMContentLoaded', event => {
+-  document.body.querySelector('#sidebarToggle')?.addEventListener('click', event => {
+-    event.preventDefault();
+-    document.body.querySelector('.sb-nav-fixed')?.classList.toggle('sb-sidenav-toggled');
+-    localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
+-  });sb-nav-fixed
++  const myMenu = document.querySelector('.my-menu');
++
++  document.querySelector('.toggleMenuOption').addEventListener('click', event => {
++    myMenu?.classList.toggle('my-menu-small');
++  });
++
++  myMenu?.classList[window.innerWidth <= 800 ? 'add' : 'remove']('my-menu-small');
+ });
+\ No newline at end of file
